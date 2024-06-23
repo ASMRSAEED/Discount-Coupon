@@ -14,7 +14,7 @@
         <br>
         <button id="btn-apply" class="bg-green-500 px-5 py-2 rounded font-bold">Apply</button>
         <input id="discount-field" class="border border-red-500 rounded pl-2" type="text"
-            placeholder="Discount Percentage %">
+            placeholder="Enter Coupon Code">
         <br><br>
         <h2>Please Pay: <span id="discounted-price">00</span></h2>
     </section>
@@ -24,12 +24,17 @@
             const discountField = document.getElementById('discount-field');
             const discountValue = discountField.value;
             discountField.value = '';
-            if (isNaN(discountValue) || discountValue < 1) {
-                return alert('Please Input Positive Number')
+
+            if (discountValue != 'DISC30') {
+                alert('Invalid Coupon Code')
+                const productPrice = document.getElementById('product-price').innerText;
+                const result = productPrice;
+                const discountedPrice = document.getElementById('discounted-price');
+                return discountedPrice.innerText = result;
             }
-            const discountPercentage = parseFloat(discountValue);
+
             const productPrice = document.getElementById('product-price').innerText;
-            const discount = (productPrice / 100) * discountPercentage;
+            const discount = (productPrice / 100) * 30;
             const result = productPrice - discount;
             const discountedPrice = document.getElementById('discounted-price');
             discountedPrice.innerText = result;
